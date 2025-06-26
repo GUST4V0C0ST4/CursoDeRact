@@ -25,14 +25,15 @@ function App() {
 ]);
 
   function onTaskClick(taskId) {
-    const newTasks = tasks.map(task => {
+    const newTasks = tasks.map((task) => {
+      //PRECISO ATUALIZAR ESSA TAREFA
       if (task.id == taskId) {
-        return { ...task, isCompleted: !task.isCompleted}
+        return { ...task, isCompleted: !task.isCompleted};
       }
-
-      return task
-    })
-
+      //NÃO PRECISO ATUALIZAR ESSA TAREFA
+      return task;
+    });
+    setTasks(newTasks);
   }
 
   return (
@@ -41,7 +42,7 @@ function App() {
         <h1 className="text-3xl text-slate-100 font-bold text-center">
           Gerenciador de Tarefas</h1>        
         <AddTask />
-        <Tasks tasks={tasks}/>
+        <Tasks tasks={tasks} onTaskClick={onTaskClick} />
       </div>
     </div>
   );
